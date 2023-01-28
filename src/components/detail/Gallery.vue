@@ -41,7 +41,7 @@ onMounted(() => {
           </h1>
           <p class="text-gray-500">{{ songs.penyanyi }}</p>
           <section id="gallery">
-            <iframe width="420" height="345" :src="'/src/assets/img/' + songs.youtube" class="w-full mt-6 rounded-2xl">
+            <iframe width="420" height="345" :src="songs.youtube" class="w-full mt-6 rounded-2xl"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
             </iframe>
             <h1 class="font-bold mt-3">Top Related</h1>
             <div class="grid grid-cols-4 gap-4 mt-4" v-if="songs.related">
