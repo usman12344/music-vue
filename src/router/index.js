@@ -10,22 +10,6 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/detail/:id',
-      name: 'detail',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/DetailView.vue')
-    },
-    {
-      path: '/pricing',
-      name: 'pricing',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/PricingView.vue')
-    },
-    {
       path: '/login',
       name: 'login',
       // route level code-splitting
@@ -42,12 +26,12 @@ const router = createRouter({
       component: () => import('../views/RegisterView.vue')
     },
     {
-      path: '/success',
-      name: 'success',
+      path: '/detail/:id',
+      name: 'detail',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/SuccessView.vue')
+      component: () => import('../views/DetailView.vue')
     },
     {
       path: '/artis',
@@ -64,6 +48,22 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/ArtisItems.vue')
+    },
+    {
+      path: '/pricing',
+      name: 'pricing',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/PricingView.vue')
+    },
+    {
+      path: '/success',
+      name: 'success',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/SuccessView.vue')
     },
   ]
 })

@@ -13,12 +13,12 @@ defineProps({
 <template>
             <div class="w-full px-1 my-1 md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4">
           <div class="overflow-hidden border border-gray-200 rounded-xl">
-            <RouterLink :to="'/artis/' + id">
+            <RouterLink :to="{ name: 'artis-items', params : { id : id }}">
               <div class="m-4 overflow-hidden rounded-xl">
                 <img
                   alt="Placeholder"
                   class="block w-full h-auto"
-                  :src="'src/assets/img/' + image"
+                  :src="image"
                 />
               </div>
             </RouterLink>
@@ -27,7 +27,7 @@ defineProps({
               class="px-4 mb-4 leading-tight"
             >
               <h1 class="text-lg">
-                <RouterLink :to="'/artis/' + id" class="font-semibold text-black no-underline hover:underline">
+                <RouterLink :to="{ name: 'artis-items', params : { id : id }}" class="font-semibold text-black no-underline hover:underline">
                   {{ title }}
                 </RouterLink>
               </h1>

@@ -1,33 +1,24 @@
 <script setup>
 import ArtisCard from "@/components/ArtisCard.vue";
-import { ref } from "vue";
+import { ref,onMounted } from 'vue';
+import axios from 'axios';
 
-const artis = ref([
-    {
-        id: 1,
-        title: 'aaaaaaaaaa',
-        count: 1,
-        image: 'artis-1.png'
-    },
-    {
-        id: 2,
-        title: 'bbbbbb',
-        count: 2,
-        image: 'artis-2.png'
-    },
-    {
-        id: 3,
-        title: 'cccccccccc',
-        count: 3,
-        image: 'artis-3.png'
-    },
-    {
-        id: 4,
-        title: 'dddddd',
-        count: 4,
-        image: 'artis-4.png'
-    },
-])
+const artis = ref([])
+
+async function getArtis() {
+  try {
+    const response = await axios.get('https://music.free.mockoapp.net/artis')
+    artis.value = response.data.data
+    // console.log(response.data)
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+onMounted(() => {
+  getArtis()
+  
+})
 
 </script>
 
@@ -41,8 +32,8 @@ const artis = ref([
             :id="artiss.id"
             :key="artiss.id"
             :title="artiss.title"
-            :count="artiss.count"
-            :image="artiss.image"
+            :count="artiss.artis_count"
+            :image="artiss.thumbnails"
             />
         </div>
     </div>

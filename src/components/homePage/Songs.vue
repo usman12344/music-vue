@@ -1,12 +1,23 @@
 <script setup>
 import ItemCard from "@/components/ItemCard.vue";
-import { ref } from 'vue';
+import axios from "axios";
+import { ref, onMounted } from "vue";
 
-const items = ref([
-    {id:1, title: 'Runtuh', penyanyi:'Febry Putri, Fiersa Bersari', image:'song-1.png'},
-    {id:2, title: 'Takkan Hilang', penyanyi:'budi Doremi', image:'song-2.png'},
-    {id:3, title: 'Apalah Arti Menunggu', penyanyi:'Raisa', image:'song-3.png'}
-])
+const items = ref([])
+
+async function getItem(){
+  try {
+    const response = await axios.get('https://music.free.mockoapp.net/songs')
+    items.value = response.data
+    console.log(response.data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+onMounted(() => {
+  getItem()
+})
 
 </script>
 
@@ -16,10 +27,10 @@ const items = ref([
       <div class="flex flex-wrap -mx-1 lg:-mx-4">
         <ItemCard v-for="item in items"
         :id="item.id"
-        :key="item.key"
+        :key="item.id"
         :title="item.title"
         :penyanyi="item.penyanyi"
-        :image="item.image"
+        :image="item.thumbnails"
         />
       </div>
     </div>
